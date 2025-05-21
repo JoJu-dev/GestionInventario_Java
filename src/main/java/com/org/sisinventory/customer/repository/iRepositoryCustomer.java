@@ -1,24 +1,24 @@
-package com.org.sisinventory.client.repository;
+package com.org.sisinventory.customer.repository;
 
 
-import com.org.sisinventory.client.model.Client;
+import com.org.sisinventory.customer.model.Customer;
 import com.org.sisinventory.repository.Repository;
 
 import java.util.List;
 
-public class iRepositoryClient implements Repository<Client> {
+public class iRepositoryCustomer implements Repository<Customer> {
     @Override
-    public List<Client> list() {
+    public List<Customer> list() {
         return null;
     }
 
     @Override
-    public Client listId(Integer id) {
+    public Customer listId(Integer id) {
         return null;
     }
 
     @Override
-    public void save(Client client) {
+    public void save(Customer client) {
 
     }
 

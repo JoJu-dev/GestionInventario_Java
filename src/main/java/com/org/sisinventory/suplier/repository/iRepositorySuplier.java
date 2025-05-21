@@ -1,8 +1,7 @@
-package com.org.sisinventarios.suplier.repository;
+package com.org.sisinventory.suplier.repository;
 
-import com.org.sisinventarios.invoice.model.Invoice;
-import com.org.sisinventarios.repository.Repository;
-import com.org.sisinventarios.suplier.model.Supplier;
+import com.org.sisinventory.repository.Repository;
+import com.org.sisinventory.suplier.model.Supplier;
 
 import java.util.List;
 

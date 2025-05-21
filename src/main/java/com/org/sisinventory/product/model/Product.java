@@ -1,6 +1,6 @@
-package com.org.sisinventarios.product.model;
+package com.org.sisinventory.product.model;
 
-import com.org.sisinventarios.suplier.model.Supplier;
+import com.org.sisinventory.suplier.model.Supplier;
 
 public class Product {
 

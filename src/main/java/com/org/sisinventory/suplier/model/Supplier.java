@@ -1,4 +1,4 @@
-package com.org.sisinventarios.suplier.model;
+package com.org.sisinventory.suplier.model;
 
 public class Supplier {
 }

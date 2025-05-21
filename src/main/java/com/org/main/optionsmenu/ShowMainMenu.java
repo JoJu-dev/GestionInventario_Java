@@ -1,7 +1,6 @@
-package com.org.principal.optionsmenu;
+package com.org.main.optionsmenu;
 
 public class ShowMainMenu {
-
     public static void menuPrincipal() {
         System.out.println("MENÚ PRINCIPAL");
         System.out.println("1- Gestión Clientes");

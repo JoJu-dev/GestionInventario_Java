@@ -1,12 +1,12 @@
-package com.org.principal.optionsmenu;
+package com.org.main.optionsmenu;
 
 import java.util.Scanner;
 
-public class ValidarNumeros {
+public class ValidateNumber {
 
     private static Scanner teclado;
 
-    public ValidarNumeros() {
+    public ValidateNumber() {
         teclado = new Scanner(System.in);
     }
 

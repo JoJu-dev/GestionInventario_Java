@@ -1,6 +1,6 @@
-package com.org.sisinventory.client.model;
+package com.org.sisinventory.customer.model;
 
-public class Client {
+public class Customer {
     private String ID;
     private String name;
     private String lastName;
@@ -8,10 +8,9 @@ public class Client {
     private String address;
     private String email;
 
-    public Client() {
-    }
+    public Customer(){}
 
-    public Client(String ID, String name, String lastName, String telephone, String address, String email) {
+    public Customer(String ID, String name, String lastName, String telephone, String address, String email) {
         this.ID = ID;
         this.name = name;
         this.lastName = lastName;

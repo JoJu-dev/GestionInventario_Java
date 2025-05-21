@@ -1,7 +1,7 @@
-package com.org.sisinventarios.product.repository;
+package com.org.sisinventory.product.repository;
 
-import com.org.sisinventarios.product.model.Product;
-import com.org.sisinventarios.repository.Repository;
+import com.org.sisinventory.product.model.Product;
+import com.org.sisinventory.repository.Repository;
 
 import java.util.List;
 

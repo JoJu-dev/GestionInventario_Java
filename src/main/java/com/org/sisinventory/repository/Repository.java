@@ -1,4 +1,4 @@
-package com.org.sisinventarios.repository;
+package com.org.sisinventory.repository;
 
 import java.util.List;
 

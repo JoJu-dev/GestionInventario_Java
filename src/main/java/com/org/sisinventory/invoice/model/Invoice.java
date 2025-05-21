@@ -1,6 +1,6 @@
-package com.org.sisinventarios.invoice.model;
+package com.org.sisinventory.invoice.model;
 
-import com.org.sisinventarios.client.model.Client;
+import com.org.sisinventory.customer.model.Customer;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +11,7 @@ public class Invoice {
     private static int counterId = 1; //variable de clase
     private int id;
     private Date date;
-    private Client idCliente;
+    private Customer idCliente;
     private double tax;
     private double total;
     private List<Integer> idsProducts;
@@ -22,7 +22,7 @@ public class Invoice {
         this.idsProducts = new ArrayList<>();
     }
 
-    public Invoice(int id, Date date, Client idCliente, double tax, double total) {
+    public Invoice(int id, Date date, Customer idCliente, double tax, double total) {
         this();
         this.date = new Date();
         this.idCliente = idCliente;
@@ -54,11 +54,11 @@ public class Invoice {
         this.date = date;
     }
 
-    public Client getIdCliente() {
+    public Customer getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Client idCliente) {
+    public void setIdCliente(Customer idCliente) {
         this.idCliente = idCliente;
     }
 
