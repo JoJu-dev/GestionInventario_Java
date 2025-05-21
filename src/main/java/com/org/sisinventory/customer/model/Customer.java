@@ -1,4 +1,4 @@
-package com.org.sisinventarios.client.model;
+package com.org.sisinventory.client.model;
 
 public class Client {
     private String ID;

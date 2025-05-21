@@ -1,8 +1,8 @@
-package com.org.sisinventarios.client.repository;
+package com.org.sisinventory.client.repository;
 
 
-import com.org.sisinventarios.client.model.Client;
-import com.org.sisinventarios.repository.Repository;
+import com.org.sisinventory.client.model.Client;
+import com.org.sisinventory.repository.Repository;
 
 import java.util.List;
 

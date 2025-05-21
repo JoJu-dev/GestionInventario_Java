@@ -22,7 +22,7 @@ public class Invoice {
         this.idsProducts = new ArrayList<>();
     }
 
-    public Invoice(int id, Date date, Client idCliente, double tax, double total, ) {
+    public Invoice(int id, Date date, Client idCliente, double tax, double total) {
         this();
         this.date = new Date();
         this.idCliente = idCliente;
@@ -82,24 +82,21 @@ public class Invoice {
         this.idsProducts.add(idsProducts);
     }
 
-    public Integer[] getProducts(){
+    public Integer[] getProducts() {
 
-        Integer idsProductsCopi [] = new Integer[this.idsProducts.size()];
+        Integer[] idsProductsCopi = new Integer[this.idsProducts.size()];
         this.idsProducts.toArray(idsProductsCopi);
         return idsProductsCopi;
     }
-
-
 
     @Override
     public String toString() {
         return
                 id + " | " +
-                date + " | " +
-                idCliente + " | " +
-                tax + " | " +
-                total + " | " +
-                idsProducts + " '\n' ";
+                        date + " | " +
+                        idCliente + " | " +
+                        tax + " | " +
+                        total + " | ";
 
     }
 }
