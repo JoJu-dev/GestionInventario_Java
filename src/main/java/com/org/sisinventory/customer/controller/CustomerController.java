@@ -1,16 +1,16 @@
 package com.org.sisinventory.customer.controller;
 
 import com.org.sisinventory.customer.model.Customer;
-import com.org.sisinventory.customer.repository.iRepositoryCustomerCopy;
+import com.org.sisinventory.customer.repository.iRepositoryCustomer;
 
 import java.util.List;
 
 public class CustomerController {
 
-    iRepositoryCustomerCopy irepoCopy ;
+    iRepositoryCustomer irepoCopy ;
 
 
-   public CustomerController(iRepositoryCustomerCopy repo){
+   public CustomerController(iRepositoryCustomer repo){
         this.irepoCopy = repo;
     }
 

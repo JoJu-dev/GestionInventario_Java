@@ -2,12 +2,12 @@ package com.org.sisinventory.customer.view;
 
 import com.org.sisinventory.customer.controller.CustomerController;
 import com.org.sisinventory.customer.model.Customer;
-import com.org.sisinventory.customer.repository.iRepositoryCustomerCopy;
+import com.org.sisinventory.customer.repository.iRepositoryCustomer;
 import com.org.sisinventory.service.ValidateNumbers;
 
 public class ViewCrudCliente {
 
-    iRepositoryCustomerCopy repo = new iRepositoryCustomerCopy();
+    iRepositoryCustomer repo = new iRepositoryCustomer();
 
     private CustomerController controller;
 
@@ -17,7 +17,12 @@ public class ViewCrudCliente {
 
     public void listCustomerView(){
 
-        this.controller.listController().forEach(System.out::println);
+        if (this.controller.listController().isEmpty()){
+            System.out.println("Aun no se tiene registrado nungun cliente");
+        }else {
+            this.controller.listController().forEach(System.out::println);
+
+        }
     }
 
     public void searchIDCustomerView(){
