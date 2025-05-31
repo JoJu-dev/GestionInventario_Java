@@ -6,19 +6,20 @@ import com.org.sisinventory.repository.Repository;
 import java.util.List;
 
 public class IrepositoryInvoice implements Repository<Invoice> {
+
     @Override
     public List<Invoice> list() {
         return null;
     }
 
     @Override
-    public Invoice listId(Integer id) {
+    public Invoice searchCustomer(List<Invoice> t) {
         return null;
     }
 
     @Override
-    public void save(Invoice invoice) {
-
+    public Invoice save(List<Invoice> t) {
+        return null;
     }
 
     @Override

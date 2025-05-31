@@ -16,6 +16,7 @@ public class ShowMainMenu {
         System.out.println("2- Buscar");
         System.out.println("3- Actualizar");
         System.out.println("4- Eliminar");
+        System.out.println("5- Listar");
         System.out.println("0 -Salir");
     }
     public static void SubmenuInvoice(){
@@ -24,4 +25,5 @@ public class ShowMainMenu {
         System.out.println("2- Buscar");
         System.out.println("0 -Salir");
     }
+
 }

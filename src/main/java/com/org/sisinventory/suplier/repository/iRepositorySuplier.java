@@ -7,19 +7,20 @@ import java.util.List;
 
 public class iRepositorySuplier implements Repository<Supplier> {
 
+
     @Override
     public List<Supplier> list() {
         return null;
     }
 
     @Override
-    public Supplier listId(Integer id) {
+    public Supplier searchCustomer(List<Supplier> t) {
         return null;
     }
 
     @Override
-    public void save(Supplier supplier) {
-
+    public Supplier save(List<Supplier> t) {
+        return null;
     }
 
     @Override

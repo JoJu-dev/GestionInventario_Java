@@ -7,9 +7,12 @@ public class ConstantMain {
     public static final int PRODUCT_MANAGEMENT = 3;
     public static final int INVOICE_MANAGEMENT = 4;
 
+
+
     public static final int CREATE = 1;
-    public static final int SEARCH= 2;
+    public static final int SEARCHID = 2;
     public static final int UPDATE = 3;
     public static final int DELETE = 4;
+    public static final int LIST = 5;
 
 }

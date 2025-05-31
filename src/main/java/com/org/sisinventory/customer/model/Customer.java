@@ -18,7 +18,13 @@ public class Customer {
         this.address = address;
         this.email = email;
     }
-
+    public Customer( String name, String lastName, String telephone, String address, String email) {
+        this.name = name;
+        this.lastName = lastName;
+        this.telephone = telephone;
+        this.address = address;
+        this.email = email;
+    }
     public String getID() {
         return ID;
     }
@@ -75,6 +81,6 @@ public class Customer {
                 lastName + " | " +
                 telephone + " | " +
                 address + " | " +
-                email + " '\n'  " ;
+                email + " \n  " ;
     }
 }
