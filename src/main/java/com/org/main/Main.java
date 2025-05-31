@@ -13,7 +13,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        iRepositoryCustomerCopy repoCopy = new iRepositoryCustomerCopy();
+        iRepositoryCustomer repoCopy = new iRepositoryCustomer();
         List<Customer> customerList = repoCopy.list();
         CustomerController customerController = new CustomerController(repoCopy);
         ViewCrudCliente viewCrudCliente = new ViewCrudCliente(customerController);
