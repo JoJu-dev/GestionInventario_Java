@@ -1,13 +1,15 @@
-package com.org.main.optionsmenu;
+package com.org.sisinventory.service;
 
 import java.util.Scanner;
 
 public class ValidateNumber {
 
-    private static Scanner teclado;
+    private static Scanner teclado = new Scanner(System.in);
+
 
     public ValidateNumber() {
-        teclado = new Scanner(System.in);
+
+      //  teclado = new Scanner(System.in);
     }
 
     public static String capturarCadenaCaracteres(String mensaje) {
@@ -48,6 +50,19 @@ public class ValidateNumber {
             }
         }
     }
+
+    public static boolean correoElectronicoValido(String correo) {
+        String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
+        return correo.matches(regex);
+    }
+
+   public static void continuar() {
+        System.out.println();
+        System.out.print("Presione Enter para continuar...");
+        teclado.nextLine();
+        System.out.println();
+    }
+
 
 
 }

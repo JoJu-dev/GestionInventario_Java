@@ -1,22 +1,23 @@
 package com.org.main;
 
 import com.org.main.optionsmenu.*;
+import com.org.sisinventory.customer.controller.CustomerController;
 import com.org.sisinventory.customer.model.Customer;
-import com.org.sisinventory.invoice.model.Invoice;
-import com.org.sisinventory.product.model.Product;
-import com.org.sisinventory.suplier.model.Supplier;
-
-import java.util.ArrayList;
+import com.org.sisinventory.customer.repository.*;
+import com.org.sisinventory.customer.view.MainManagement;
+import com.org.sisinventory.customer.view.ViewCrudCliente;
+import com.org.sisinventory.service.*;
 import java.util.List;
-import java.util.Optional;
 
 public class Main {
 
     public static void main(String[] args) {
-        List<Customer> clientList = new ArrayList<>();
-        List<Supplier> supplierList = new ArrayList<>();
-        List<Product> productList = new ArrayList<>();
-        List<Invoice> invoiceList = new ArrayList<>();
+
+        iRepositoryCustomerCopy repoCopy = new iRepositoryCustomerCopy();
+        List<Customer> customerList = repoCopy.list();
+        CustomerController customerController = new CustomerController(repoCopy);
+        ViewCrudCliente viewCrudCliente = new ViewCrudCliente(customerController);
+
 
         int option, optionSubMenu;
 
@@ -24,7 +25,7 @@ public class Main {
             ShowMainMenu.menuPrincipal();
             do {
 
-                option = ValidateNumber.capturarEntero("Dígite la opción a realizar: ");
+                option = ValidateNumbers.capturarEntero("Dígite la opción a realizar: ");
 
                 if (option < ConstantMain.EXIT || option > ConstantMain.INVOICE_MANAGEMENT) {
                     System.out.println("Digíte un valor entre 0 y 4");
@@ -40,31 +41,11 @@ public class Main {
 
                 case ConstantMain.CUSTOMER_MANAGEMENT:
 
-                    do {
-                        ShowMainMenu.Submenu("CLIENTES");
-                        optionSubMenu = ValidateNumber.capturarEntero("Digite la Opcion a realizar.");
-
-                        if (optionSubMenu < ConstantMain.EXIT || optionSubMenu > ConstantMain.DELETE) {
-                            System.out.println("Digíte un valor entre 0 y 4");
-
-                            switch (optionSubMenu) {
-                                case ConstantMain.CREATE:
-                                    break;
-                                case ConstantMain.SEARCH:
-                                    break;
-                                case ConstantMain.UPDATE:
-                                    break;
-                                case ConstantMain.DELETE:
-                                    break;
-                            }
-
-
-                        }
-
-                    } while (option < ConstantMain.EXIT || option > ConstantMain.DELETE);
-
+                    MainManagement.MenuCustomerManagement(viewCrudCliente, option);
                     break;
+
                 case ConstantMain.SUPPLIER_MANAGEMENT:
+
                     break;
 
                 case ConstantMain.PRODUCT_MANAGEMENT:
@@ -77,4 +58,6 @@ public class Main {
         } while (option != ConstantMain.EXIT);
 
     }
+
+
 }

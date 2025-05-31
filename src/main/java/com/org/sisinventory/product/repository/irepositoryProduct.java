@@ -6,19 +6,20 @@ import com.org.sisinventory.repository.Repository;
 import java.util.List;
 
 public class irepositoryProduct implements Repository<Product> {
+
     @Override
     public List<Product> list() {
         return null;
     }
 
     @Override
-    public Product listId(Integer id) {
+    public Product searchCustomer(List<Product> t) {
         return null;
     }
 
     @Override
-    public void save(Product product) {
-
+    public Product save(List<Product> t) {
+        return null;
     }
 
     @Override
