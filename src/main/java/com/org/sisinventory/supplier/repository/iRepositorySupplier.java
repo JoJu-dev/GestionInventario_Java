@@ -1,38 +1,52 @@
 package com.org.sisinventory.supplier.repository;
 
-import com.org.sisinventory.customer.model.Customer;
 import com.org.sisinventory.repository.Repository;
 import com.org.sisinventory.supplier.model.Supplier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class iRepositorySuplier implements Repository<Supplier> {
+public class iRepositorySupplier implements Repository<Supplier> {
 
-    private List<Supplier> datasource = new ArrayList<>();
+    List<Supplier> dataSource = new ArrayList<>();
 
     @Override
     public List<Supplier> list() {
-        return this.datasource;
+        return this.dataSource;
     }
 
     @Override
-    public Customer searchCustomer(String id) {
-        return null;
+    public Supplier searchID(Integer id) {
+        Supplier resultado = null;
+        for (Supplier supplier : this.dataSource) {
+            if (supplier.getId() == id) {
+                resultado = supplier;
+                break;
+            }
+        }
+
+        return resultado;
     }
 
     @Override
     public void save(Supplier supplier) {
-
+        this.dataSource.add(supplier);
     }
 
     @Override
     public void update(Supplier supplier) {
+        Supplier provider = searchID(supplier.getId());
 
+        if (provider != null) {
+
+            provider.setName(supplier.getName());
+            provider.setTelephone(supplier.getTelephone());
+            provider.setAddress(supplier.getAddress());
+        }
     }
 
     @Override
-    public void delete(String id) {
-
+    public void delete(Supplier supplier) {
+        this.dataSource.remove(supplier);
     }
 }

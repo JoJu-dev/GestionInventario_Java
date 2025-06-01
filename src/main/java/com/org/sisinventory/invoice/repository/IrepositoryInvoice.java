@@ -13,17 +13,22 @@ public class IrepositoryInvoice implements Repository<Invoice> {
     }
 
     @Override
-    public Invoice searchCustomer(List<Invoice> t) {
+    public Invoice searchID(Integer t) {
         return null;
     }
 
     @Override
-    public Invoice save(List<Invoice> t) {
-        return null;
+    public void save(Invoice invoice) {
+
     }
 
     @Override
-    public void delete(Integer id) {
+    public void update(Invoice invoice) {
+
+    }
+
+    @Override
+    public void delete(Invoice id) {
 
     }
 }

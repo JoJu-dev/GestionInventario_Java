@@ -11,9 +11,13 @@ public class ProductController{
     iRepositoryProduct iRepositoryProduct;
 
     public ProductController(iRepositoryProduct iRepositoryProduct) {
+
         this.iRepositoryProduct = iRepositoryProduct;
     }
-
+    //Ver lista de productos
+    public List<Product> productListController(){
+        return iRepositoryProduct.list();
+    }
 
     public List<Product> listController (){
        return iRepositoryProduct.list();
