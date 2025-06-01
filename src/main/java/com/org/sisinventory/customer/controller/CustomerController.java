@@ -20,9 +20,9 @@ public class CustomerController {
        return this.irepoCopy.list();
     }
 
-    public Customer SearchCustomerIDController(String id){
+    public Customer SearchCustomerIDController(Integer id){
 
-        return this.irepoCopy.searchCustomer(id);
+        return this.irepoCopy.searchID(id);
     }
     public void SaveCustomerController(String identification, String name, String lastName, String telephoneNumbers, String address, String mail){
 
@@ -39,9 +39,9 @@ public class CustomerController {
 
     }
 
-    public void removeCustomerController(String id){
+    public void removeCustomerController(Customer customer){
 
-       irepoCopy.delete(id);
+       irepoCopy.delete(customer);
 
     }
 
