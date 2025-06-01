@@ -4,7 +4,7 @@ import com.org.sisinventory.product.controller.ProductController;
 import com.org.sisinventory.product.model.Product;
 import com.org.sisinventory.service.ValidateNumbers;
 
-
+import java.util.List;
 
 
 public class ViewCrudProduct {
@@ -21,6 +21,12 @@ public class ViewCrudProduct {
         } else {
             productController.listController().forEach(System.out::println);
         }
+    }
+
+    //Ver lista de productos
+    public List<Product> productListView(){
+
+        return productController.productListController();
     }
 
     public void listSearchProductID() {

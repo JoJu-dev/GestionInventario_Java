@@ -15,6 +15,7 @@ public class iRepositoryProduct implements Repository<Product> {
 
     @Override
     public List<Product> list() {
+
         return this.datasource;
     }
 

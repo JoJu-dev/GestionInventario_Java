@@ -6,7 +6,7 @@ import com.org.sisinventory.service.ValidateNumbers;
 
 public class MainManagementProduct {
 
-    public static void MenuCustomerManagement(ViewCrudProduct viewCrudProduct, int option) {
+    public static void MenuProductManagement(ViewCrudProduct viewCrudProduct, int option) {
         int optionSubMenu;
         do {
 
@@ -47,5 +47,9 @@ public class MainManagementProduct {
 
 
         } while (option < ConstantMain.EXIT || option > ConstantMain.LIST);
+
+
+
+
     }
 }

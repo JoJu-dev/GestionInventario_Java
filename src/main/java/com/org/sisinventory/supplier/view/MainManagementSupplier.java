@@ -2,12 +2,14 @@ package com.org.sisinventory.supplier.view;
 
 import com.org.main.optionsmenu.ConstantMain;
 import com.org.main.optionsmenu.ShowMainMenu;
-import com.org.sisinventory.customer.view.ViewCrudCliente;
+import com.org.sisinventory.product.model.Product;
 import com.org.sisinventory.service.ValidateNumbers;
 
-public class MainManagement {
+import java.util.List;
 
-    public static void MenuCustomerManagement(ViewCrudSupplier viewCrudSupplier, int option) {
+public class MainManagementSupplier {
+
+    public static void MenuCustomerManagement(ViewCrudSupplier viewCrudSupplier, int option, List<Product> productList) {
         int optionSubMenu;
         do {
 
@@ -28,7 +30,7 @@ public class MainManagement {
             switch (optionSubMenu) {
 
                 case ConstantMain.CREATE:
-                    viewCrudSupplier.saveSupplierVie();
+                    viewCrudSupplier.saveSupplierView();
                     break;
 
                 case ConstantMain.SEARCHID:
@@ -39,7 +41,7 @@ public class MainManagement {
                     viewCrudSupplier.updateSupplierVie();
                     break;
                 case ConstantMain.DELETE:
-                    viewCrudSupplier.deleteSupplierView();
+                    viewCrudSupplier.deleteSupplierView(productList);
                     break;
                 case ConstantMain.LIST:
                     viewCrudSupplier.listSuppielView();
