@@ -28,10 +28,10 @@ public class ViewCrudCliente {
     public void searchIDCustomerView(){
         Integer ID = ValidateNumbers.capturarEntero("Agregue id de cliente para buscarlo");
 
-        Customer customer  = controller.SearchCustomerIDController(String.valueOf(ID));
+        Customer customer  = controller.SearchCustomerIDController(ID);
 
         if (customer != null){
-            System.out.println(controller.SearchCustomerIDController(String.valueOf(ID)));
+            System.out.println(controller.SearchCustomerIDController(ID));
         }
         else {
             System.out.println("Cliente no encontrado");
@@ -43,7 +43,7 @@ public class ViewCrudCliente {
     public void savedCustomerView() {
         Customer customer;
         int telephoneNumbers = 0;
-        String identification = "";
+
         int IDNumbers;
         do {
             IDNumbers = ValidateNumbers.capturarEntero("Dígite un número entero");
@@ -53,11 +53,11 @@ public class ViewCrudCliente {
                 IDNumbers = 0;
                 continue;
             }
-            identification = String.valueOf(IDNumbers);
-            customer = controller.SearchCustomerIDController(identification);  // irepoCopy.searchCustomer(identification);
+
+            customer = controller.SearchCustomerIDController(IDNumbers);  // irepoCopy.searchCustomer(identification);
 
             if (customer != null) {
-                System.out.println("Ya existe otro cliente con el número de cédula: %s. \n" + identification);
+                System.out.println("Ya existe otro cliente con el número de cédula: %s. \n" + IDNumbers);
                 IDNumbers = 0;
             }
 
@@ -83,7 +83,7 @@ public class ViewCrudCliente {
                 }
                 break;
             }
-            controller.SaveCustomerController(identification, name, lastName, String.valueOf(telephoneNumbers), address, mail);
+            controller.SaveCustomerController(String.valueOf(IDNumbers), name, lastName, String.valueOf(telephoneNumbers), address, mail);
 
 
         } while (telephoneNumbers <= 0);
@@ -93,7 +93,6 @@ public class ViewCrudCliente {
     public void UpdateCustomerView(){
         Customer customer;
         int telephoneNumbers = 0;
-        String identification = "";
         int IDNumbers;
         do {
             IDNumbers = ValidateNumbers.capturarEntero("Dígite un número entero");
@@ -103,8 +102,8 @@ public class ViewCrudCliente {
                 IDNumbers = 0;
                 continue;
             }
-            identification = String.valueOf(IDNumbers);
-            customer = controller.SearchCustomerIDController(identification);
+
+            customer = controller.SearchCustomerIDController(IDNumbers);
 
             if (customer != null) {
                 System.out.println("Datos de cliente: \n Digite 'x' si quiere dejar los datos igual");
@@ -131,7 +130,7 @@ public class ViewCrudCliente {
                         break;
                     }
 
-                    controller.updateCustomerController(identification,name, lastName, String.valueOf(telephoneNumbers), address, mail);
+                    controller.updateCustomerController(String.valueOf(IDNumbers),name, lastName, String.valueOf(telephoneNumbers), address, mail);
 
 
                 } while (telephoneNumbers <= 0);
@@ -145,8 +144,19 @@ public class ViewCrudCliente {
 
     public void removeCustomerView(){
         Integer ID = ValidateNumbers.capturarEntero("Agregue id de cliente para buscarlo");
-        controller.removeCustomerController(String.valueOf(ID));
-    }
+
+        Customer customer  = controller.SearchCustomerIDController(ID);
+
+        if (customer != null){
+            System.out.println("Cliente "+ customer.getName() +" eliminado : ");
+            controller.removeCustomerController(customer);
+        }
+
+        else {
+            System.out.println("Cliente no encontrado");
+        }
+
+         }
 
 
 }

@@ -1,18 +1,19 @@
-package com.org.sisinventory.customer.view;
+package com.org.sisinventory.supplier.view;
 
 import com.org.main.optionsmenu.ConstantMain;
 import com.org.main.optionsmenu.ShowMainMenu;
+import com.org.sisinventory.customer.view.ViewCrudCliente;
 import com.org.sisinventory.service.ValidateNumbers;
 
 public class MainManagement {
 
-    public static void MenuCustomerManagement(ViewCrudCliente viewCrudCliente, int option) {
+    public static void MenuCustomerManagement(ViewCrudSupplier viewCrudSupplier, int option) {
         int optionSubMenu;
         do {
 
             do {
-                ShowMainMenu.Submenu("CLIENTES");
-                optionSubMenu = ValidateNumbers.capturarEntero("Digite la Opcion a realizar de clientes.");
+                ShowMainMenu.Submenu("Proveedores");
+                optionSubMenu = ValidateNumbers.capturarEntero("Digite la Opcion a realizar de Proveedores.");
 
                 if (optionSubMenu < ConstantMain.EXIT || optionSubMenu > ConstantMain.LIST) {
                     System.out.println("Digíte un valor entre 0 y 4");
@@ -27,21 +28,21 @@ public class MainManagement {
             switch (optionSubMenu) {
 
                 case ConstantMain.CREATE:
-                    viewCrudCliente.savedCustomerView();
+                    viewCrudSupplier.saveSupplierVie();
                     break;
 
                 case ConstantMain.SEARCHID:
-                    viewCrudCliente.searchIDCustomerView();
+                    viewCrudSupplier.searchSupplierView();
                     break;
 
                 case ConstantMain.UPDATE:
-                    viewCrudCliente.UpdateCustomerView();
+                    viewCrudSupplier.updateSupplierVie();
                     break;
                 case ConstantMain.DELETE:
-                    viewCrudCliente.removeCustomerView();
+                    viewCrudSupplier.deleteSupplierView();
                     break;
                 case ConstantMain.LIST:
-                    viewCrudCliente.listCustomerView();
+                    viewCrudSupplier.listSuppielView();
                     break;
             }
 

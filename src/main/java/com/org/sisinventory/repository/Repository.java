@@ -6,10 +6,12 @@ public interface Repository<T> {
 
     List<T> list();
 
-    T searchCustomer(List<T> t);
+    T searchID(Integer t);
 
-     T save(List<T> t);
+     void save( T t);
 
-    void delete (Integer id);
+     void update(T t);
+
+    void delete (T id);
 }
 

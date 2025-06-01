@@ -1,11 +1,11 @@
 package com.org.sisinventory.customer.repository;
 import com.org.sisinventory.customer.model.Customer;
-import com.org.sisinventory.repository.RepositoryCopy;
+import com.org.sisinventory.repository.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class iRepositoryCustomer implements RepositoryCopy<Customer> {
+public class iRepositoryCustomer implements Repository<Customer> {
 
     private  List<Customer> dataSource = new ArrayList<>();
 
@@ -18,10 +18,10 @@ public class iRepositoryCustomer implements RepositoryCopy<Customer> {
     }
 
     @Override
-    public Customer searchCustomer(String id) {
+    public Customer searchID(Integer id) {
         Customer resultado = null;
         for (Customer customer : this.dataSource) {
-            if (customer.getID() != null && customer.getID().equals(id)) {
+            if (customer.getID() != null && customer.getID().equals(String.valueOf(id))) {
                 resultado = customer;
                 break;
             }
@@ -38,7 +38,7 @@ public class iRepositoryCustomer implements RepositoryCopy<Customer> {
 
     @Override
     public void update(Customer customer) {
-        Customer client = searchCustomer(customer.getID());
+        Customer client = searchID(Integer.parseInt(customer.getID()));
         if (client != null){
             if(!customer.getName().equals("x")){
                 client.setName(customer.getName());
@@ -59,8 +59,8 @@ public class iRepositoryCustomer implements RepositoryCopy<Customer> {
     }
 
     @Override
-    public void delete(String id) {
-        this.dataSource.remove(searchCustomer(id));
+    public void delete(Customer customer) {
+        this.dataSource.remove(customer);
         //para eliminar cliente debe de verificar que no exista factura, si existe factura no se elimina cliente.
     }
 
