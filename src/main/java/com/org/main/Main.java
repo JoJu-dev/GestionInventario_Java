@@ -5,7 +5,8 @@ import com.org.main.optionsmenu.ShowMainMenu;
 import com.org.sisinventory.customer.controller.CustomerController;
 import com.org.sisinventory.customer.repository.iRepositoryCustomer;
 import com.org.sisinventory.customer.view.*;
-
+import com.org.sisinventory.product.controller.ProductController;
+import com.org.sisinventory.product.repository.iRepositoryProduct;
 import com.org.sisinventory.product.view.*;
 
 import com.org.sisinventory.service.ValidateNumbers;
@@ -20,7 +21,9 @@ public class Main {
         CustomerController customerController = new CustomerController(repoCopy);
         ViewCrudCliente viewCrudCliente = new ViewCrudCliente(customerController);
 
-
+        iRepositoryProduct repoProduct = new iRepositoryProduct();
+        ProductController productController = new ProductController(repoProduct);
+        ViewCrudProduct viewCrudProduct = new ViewCrudProduct(productController);
 
         int option, optionSubMenu;
 
@@ -52,7 +55,7 @@ public class Main {
                     break;
 
                 case ConstantMain.PRODUCT_MANAGEMENT:
-
+                    MainManagementProduct.MenuCustomerManagement(viewCrudProduct,option);
                     break;
                 case ConstantMain.INVOICE_MANAGEMENT:
                     break;

@@ -2,12 +2,11 @@ package com.org.sisinventory.product.view;
 
 import com.org.main.optionsmenu.ConstantMain;
 import com.org.main.optionsmenu.ShowMainMenu;
-import com.org.sisinventory.product.view.viewCrudProduct;
 import com.org.sisinventory.service.ValidateNumbers;
 
-public class MainManagement {
+public class MainManagementProduct {
 
-    public static void MenuCustomerManagement(viewCrudProduct viewCrudProduct, int option) {
+    public static void MenuCustomerManagement(ViewCrudProduct viewCrudProduct, int option) {
         int optionSubMenu;
         do {
 
@@ -32,17 +31,17 @@ public class MainManagement {
                     break;
 
                 case ConstantMain.SEARCHID:
-                    viewCrudCliente.searchIDCustomerView();
+                    viewCrudProduct.listSearchProductID();
                     break;
 
                 case ConstantMain.UPDATE:
-                    viewCrudCliente.UpdateCustomerView();
+                    viewCrudProduct.updateProductView();
                     break;
                 case ConstantMain.DELETE:
-                    viewCrudCliente.removeCustomerView();
+                    viewCrudProduct.deleteProductView();
                     break;
                 case ConstantMain.LIST:
-                    viewCrudCliente.listCustomerView();
+                    viewCrudProduct.listView();
                     break;
             }
 

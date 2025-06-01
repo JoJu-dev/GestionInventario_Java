@@ -1,22 +1,22 @@
 package com.org.sisinventory.product.model;
 
-import com.org.sisinventory.suplier.model.Supplier;
+import com.org.sisinventory.supplier.model.Supplier;
 
 public class Product {
 
-    private int id;
+    private Integer id;
     private String name;
     private String description;
     private double purchasePrice;
     private double salePrice;
     private int amount;
     private int amountMinStock;
-    private Supplier idSuplier;
+    private Integer idSuplier;
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, double purchasePrice, double salePrice, int amount, int amountMinStock, Supplier idSuplier) {
+    public Product(Integer id, String name, String description, double purchasePrice, double salePrice, int amount, int amountMinStock, Integer idSuplier) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -27,11 +27,11 @@ public class Product {
         this.idSuplier = idSuplier;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -83,11 +83,11 @@ public class Product {
         this.amountMinStock = amountMinStock;
     }
 
-    public Supplier getIdSuplier() {
+    public Integer getIdSuplier() {
         return idSuplier;
     }
 
-    public void setIdSuplier(Supplier idSuplier) {
+    public void setIdSuplier(Integer idSuplier) {
         this.idSuplier = idSuplier;
     }
 
@@ -101,7 +101,7 @@ public class Product {
                 salePrice + " | "+
                 amount + " | " +
                 amountMinStock +" | "+
-                idSuplier + "' \n '";
+                idSuplier + " \n ";
 
     }
 }
