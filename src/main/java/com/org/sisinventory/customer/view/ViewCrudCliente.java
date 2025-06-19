@@ -1,5 +1,6 @@
 package com.org.sisinventory.customer.view;
 
+import com.org.main.optionsmenu.ShowMainMenu;
 import com.org.sisinventory.customer.controller.CustomerController;
 import com.org.sisinventory.customer.model.Customer;
 import com.org.sisinventory.customer.repository.iRepositoryCustomer;
@@ -12,6 +13,7 @@ public class ViewCrudCliente {
     private CustomerController controller;
 
     public ViewCrudCliente(CustomerController controller){
+
         this.controller = controller;
     }
 
@@ -23,6 +25,7 @@ public class ViewCrudCliente {
             this.controller.listController().forEach(System.out::println);
 
         }
+        ShowMainMenu.continuar();
     }
 
     public void searchIDCustomerView(){
@@ -36,6 +39,7 @@ public class ViewCrudCliente {
         else {
             System.out.println("Cliente no encontrado");
         }
+        ShowMainMenu.continuar();
 
 
     }
@@ -60,10 +64,11 @@ public class ViewCrudCliente {
                 System.out.println("Ya existe otro cliente con el número de cédula: %s. \n" + IDNumbers);
                 IDNumbers = 0;
             }
-
+            ShowMainMenu.continuar();
         } while (IDNumbers <= 0);
 
         String name = ValidateNumbers.capturarCadenaCaracteres("Dígite nombres del cliente nuevo");
+
         String lastName = ValidateNumbers.capturarCadenaCaracteres("Dígite apellidos del cliente nuevo");
 
         do {
@@ -71,7 +76,6 @@ public class ViewCrudCliente {
             if (telephoneNumbers <= 0) {
                 System.out.println("Número de teléfono debe de ser un valor positivo");
             }
-
             String address = ValidateNumbers.capturarCadenaCaracteres("Dígite dirección del cliente nuevo");
             String mail;
             while (true) {

@@ -5,6 +5,9 @@ import com.org.main.optionsmenu.ShowMainMenu;
 import com.org.sisinventory.customer.controller.CustomerController;
 import com.org.sisinventory.customer.repository.iRepositoryCustomer;
 import com.org.sisinventory.customer.view.*;
+import com.org.sisinventory.invoice.controller.InvoiceController;
+import com.org.sisinventory.invoice.view.MainManagementInvoice;
+import com.org.sisinventory.invoice.view.ViewCrudInvoice;
 import com.org.sisinventory.product.controller.ProductController;
 import com.org.sisinventory.product.repository.iRepositoryProduct;
 import com.org.sisinventory.product.view.*;
@@ -14,6 +17,7 @@ import com.org.sisinventory.supplier.repository.iRepositorySupplier;
 import com.org.sisinventory.service.ValidateNumbers;
 import com.org.sisinventory.supplier.view.MainManagementSupplier;
 import com.org.sisinventory.supplier.view.ViewCrudSupplier;
+import com.org.sisinventory.invoice.repository.iRepositoryInvoice;
 
 
 public class Main {
@@ -31,6 +35,10 @@ public class Main {
         iRepositorySupplier repoSupplier = new iRepositorySupplier();
         SupplierController supplierController = new SupplierController(repoSupplier);
         ViewCrudSupplier viewCrudSupplier = new ViewCrudSupplier(supplierController);
+
+        iRepositoryInvoice repositoryInvoice = new iRepositoryInvoice();
+        InvoiceController invoiceController = new InvoiceController(repositoryInvoice);
+        ViewCrudInvoice viewCrudInvoice = new ViewCrudInvoice(invoiceController);
 
 
         int option, optionSubMenu;
@@ -56,13 +64,20 @@ public class Main {
                         MainManagementCustomer.MenuCustomerManagement(viewCrudCliente, option);
 
                 case ConstantMain.SUPPLIER_MANAGEMENT ->
-                        MainManagementSupplier.MenuCustomerManagement(viewCrudSupplier,option,viewCrudProduct.productListView());
+                        MainManagementSupplier.MenuCustomerManagement(viewCrudSupplier, option, viewCrudProduct.productListView());
 
                 case ConstantMain.PRODUCT_MANAGEMENT ->
-                        MainManagementProduct.MenuProductManagement(viewCrudProduct,option);
+                        MainManagementProduct.MenuProductManagement(viewCrudProduct, option, supplierController.listController(), invoiceController);
 
-                case ConstantMain.INVOICE_MANAGEMENT -> 
-                        MainManagementProduct.MenuProductManagement(viewCrudProduct,option);
+                case ConstantMain.INVOICE_MANAGEMENT -> {
+                    if (customerController.listController().isEmpty() || productController.listController().isEmpty()) {
+                        System.out.println("No se puede Acceder al Menu Facturación, no existen datos de clientes o productos");
+                    } else {
+                        MainManagementInvoice.MenuCustomerManagement(viewCrudInvoice, option, customerController, viewCrudCliente, productController, viewCrudProduct);
+
+                    }
+                    ShowMainMenu.continuar();
+                }
             }
 
         } while (option != ConstantMain.EXIT);

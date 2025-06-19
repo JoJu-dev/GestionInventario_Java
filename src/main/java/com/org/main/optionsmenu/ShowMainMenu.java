@@ -1,5 +1,7 @@
 package com.org.main.optionsmenu;
 
+import java.util.Scanner;
+
 public class ShowMainMenu {
     public static void menuPrincipal() {
         System.out.println("MENÚ PRINCIPAL");
@@ -19,11 +21,18 @@ public class ShowMainMenu {
         System.out.println("5- Listar");
         System.out.println("0 -Salir");
     }
-    public static void SubmenuInvoice(){
-        System.out.println("MENÚ GESTIÓN  FACTURACIÓN: %s \n");
+    public static void SubmenuInvoice(String menu){
+        System.out.println("MENÚ GESTIÓN  FACTURACIÓN: %s \n"+ menu);
         System.out.println("1- Crear");
-        System.out.println("2- Buscar");
+        System.out.println("2- Listar");
         System.out.println("0 -Salir");
+    }
+
+    public static void continuar(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\n\n\n Presione enter para continuar");
+        scan.nextLine();
+        System.out.println();
     }
 
 }

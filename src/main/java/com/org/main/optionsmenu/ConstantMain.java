@@ -15,4 +15,7 @@ public class ConstantMain {
     public static final int DELETE = 4;
     public static final int LIST = 5;
 
+    public static final int LIST_INVOICE = 2;
+
+
 }
