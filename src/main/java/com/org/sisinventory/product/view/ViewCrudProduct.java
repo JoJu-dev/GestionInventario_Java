@@ -1,9 +1,13 @@
 package com.org.sisinventory.product.view;
 
+import com.org.sisinventory.invoice.controller.InvoiceController;
+import com.org.sisinventory.invoice.model.Invoice;
 import com.org.sisinventory.product.controller.ProductController;
 import com.org.sisinventory.product.model.Product;
 import com.org.sisinventory.service.ValidateNumbers;
+import com.org.sisinventory.supplier.model.Supplier;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -24,7 +28,7 @@ public class ViewCrudProduct {
     }
 
     //Ver lista de productos
-    public List<Product> productListView(){
+    public List<Product> productListView() {
 
         return productController.productListController();
     }
@@ -41,7 +45,7 @@ public class ViewCrudProduct {
         }
     }
 
-    public void saveProductView() {
+    public void saveProductView(List<Supplier> supplierList) {
         int idProduct = 0;
         do {
             idProduct = ValidateNumbers.capturarEntero("Ingrese id de  Producto");
@@ -105,6 +109,7 @@ public class ViewCrudProduct {
         } while (amountMinStock <= 0);
         Integer idSupplier = 0;
         do {
+            supplierList(supplierList);
             idSupplier = ValidateNumbers.capturarEntero("Agrege un id de proveedor de producto ");
 
             if (idSupplier <= 0) {
@@ -197,19 +202,51 @@ public class ViewCrudProduct {
         } while (idProduct <= 0);
 
     }
-    public void deleteProductView(){
+
+    public void deleteProductView(InvoiceController invoiceController) {
+
         int id = ValidateNumbers.capturarEntero("Introduzca el id del producto");
 
         Product product = productController.searchProductIDController(id);
 
         if (product != null) {
-            productController.deleteProductController(product);
-            System.out.println("Producto eliminado");
+            if (!isExistInvoiceInProduct(id, invoiceController)) {
+                productController.deleteProductController(product);
+                System.out.println("Producto eliminado");
+
+            } else {
+                System.out.println("No se ha eliminado producto porque esta asociado a una factura");
+            }
         } else {
             System.out.println("Producto no encontrado");
         }
     }
 
+    public boolean isExistInvoiceInProduct(Integer id, InvoiceController invoiceController) {
+        Integer[] idProductArrays;
+        boolean response = false;
+        for (Invoice invoice : invoiceController.listInvoiceController()) {
+            idProductArrays = invoice.getProducts();
 
+            Arrays.sort(idProductArrays);
+            if (Arrays.binarySearch(idProductArrays, id) != -1) {
+                response = true;
+            }
+        }
+        return response;
+    }
+
+    //Id Supplier exist?
+    public void supplierList(List<Supplier> supplierList) {
+
+        if (supplierList.isEmpty()) {
+            System.out.println("No existen proveedores en este momento:");
+
+        } else {
+            System.out.println("Lista de Proveedores: ");
+            supplierList.forEach(System.out::println);
+        }
+
+    }
 
 }

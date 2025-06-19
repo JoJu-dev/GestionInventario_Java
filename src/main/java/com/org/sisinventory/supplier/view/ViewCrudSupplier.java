@@ -67,7 +67,7 @@ public class ViewCrudSupplier {
                 System.out.println("Número de teléfono debe de ser un valor positivo");
             }
 
-            String address = ValidateNumbers.capturarCadenaCaracteres("Dígite dirección del cliente nuevo");
+            String address = ValidateNumbers.capturarCadenaCaracteres("Dígite dirección del Proveedor nuevo");
 
 
             supplierController.saveSupplierController(IDNumbers, name,String.valueOf(telephoneNumbers), address);

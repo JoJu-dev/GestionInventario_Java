@@ -104,4 +104,8 @@ public class Product {
                 idSuplier + " \n ";
 
     }
+
+    public void printProductForInvoice(){
+        System.out.println(getId() + " | " +  getName() + " | " + getSalePrice() );
+    }
 }

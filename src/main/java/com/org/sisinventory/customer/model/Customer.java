@@ -83,4 +83,9 @@ public class Customer {
                 address + " | " +
                 email + " \n  " ;
     }
+
+    public void printCustomerForInvoice(){
+
+        System.out.println(getID() + " | "+ getName() +" | " + getLastName() );
+    }
 }

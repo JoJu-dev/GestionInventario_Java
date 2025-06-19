@@ -9,25 +9,25 @@ import java.util.List;
 public class Invoice {
 
     private static int counterId = 1; //variable de clase
-    private int id;
+    private Integer idInvoice;
     private Date date;
-    private Customer idCliente;
+    private String idCliente;
     private double tax;
     private double total;
     private List<Integer> idsProducts;
 
     public Invoice() {
-        this.id = counterId;
+        this.idInvoice = counterId;
         counterId++;
         this.idsProducts = new ArrayList<>();
     }
 
-    public Invoice(int id, Date date, Customer idCliente, double tax, double total) {
+    public Invoice(String idCliente, double tax) {
         this();
         this.date = new Date();
         this.idCliente = idCliente;
         this.tax = tax;
-        this.total = total;
+
     }
 
     public static int getCounterId() {
@@ -38,12 +38,12 @@ public class Invoice {
         Invoice.counterId = counterId;
     }
 
-    public int getId() {
-        return id;
+    public Integer getIdInvoice() {
+        return idInvoice;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdInvoice(Integer idInvoice) {
+        this.idInvoice = idInvoice;
     }
 
     public Date getDate() {
@@ -54,11 +54,11 @@ public class Invoice {
         this.date = date;
     }
 
-    public Customer getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(Customer idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -92,11 +92,12 @@ public class Invoice {
     @Override
     public String toString() {
         return
-                id + " | " +
+                idInvoice + " | " +
                         date + " | " +
-                        idCliente + " | " +
-                        tax + " | " +
+                        tax + " | "+
                         total + " | ";
-
     }
+
+
+
 }
