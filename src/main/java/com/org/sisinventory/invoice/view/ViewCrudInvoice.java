@@ -30,16 +30,18 @@ public class ViewCrudInvoice {
     public void viewList(ProductController productController,CustomerController customerController) {
         if (this.invoiceController.listInvoiceController().isEmpty()) {
             System.out.println("Lista de facturas esta vacia");
+            ShowMainMenu.continuar();
         } else {
             System.out.println("Datos Factura");
 
             for (Invoice invoice : this.invoiceController.listInvoiceController()) {
                 System.out.println("ID " + invoice.getIdInvoice() + "\n " + "Fecha" + invoice.getDate() + "\n" +
-                        " Total Factura " + invoice.getTotal() + " \n\n");
+                        " Total Factura " + invoice.getTotal());
 
-                Customer customer = customerController.SearchCustomerIDController(Integer.valueOf(invoice.getIdCliente()));
+                int idCliente = Integer.parseInt(invoice.getIdCliente());
+                Customer customer = customerController.SearchCustomerIDController(idCliente);
                 System.out.println("Datos del Cliente");
-                System.out.println("CUI "+ invoice.getIdCliente() +"\n" + "Nombre: Cliente" + customer.getName() + customer.getLastName() +"\n\n");
+                System.out.println("CUI "+ idCliente+"\n" + "Nombre Cliente " + customer.getName() + customer.getLastName());
 
                 System.out.println("Productos Comprados.");
                 if (invoice.getProducts().length <= 0) {
@@ -52,6 +54,7 @@ public class ViewCrudInvoice {
                     }
                 }
             }
+            ShowMainMenu.continuar();
         }
 
     }
@@ -86,56 +89,58 @@ public class ViewCrudInvoice {
         do {
             System.out.println("LISTA DE PRODUCTOS");
             viewCrudProduct.listView();
-            idProduct = ValidateNumbers.capturarEntero("Ingrese Identificador de producto");
+           do {
+               idProduct = ValidateNumbers.capturarEntero("Ingrese Identificador de producto");
 
-            if ((idProduct == ConstantMain.EXIT) && (!idsProduct.isEmpty())) {
-                break;
-            }
+               if ((idProduct == ConstantMain.EXIT) && (!idsProduct.isEmpty())) {
+                   break;
+               }
 
-            if (idProduct <= 0) {
-                System.out.println("El identificador debe de ser un número entero positivo");
-                idProduct = 0;
-                continue;
-            }
+               if (idProduct <= 0) {
+                   System.out.println("El identificador debe de ser un número entero positivo");
+                   idProduct = 0;
+                   continue;
+               }
+
+               Product product = productController.searchProductIDController(idProduct);
+
+               if (product != null) {
+                   if (product.getAmount() > 0) {
+                       do {
+
+                           cantidad = ValidateNumbers.capturarEntero("Digite la cantidad a comprar de este producto");
+
+                           if (cantidad <= 0) {
+                               System.out.println("La cantidad debe de ser un número entero positivo");
+                               cantidad = 0;
+                               continue;
+                           }
+
+                           if (cantidad > product.getAmount()) {
+                               System.out.println("MENSAJE: No hay cantidad suficiente de este producto. Cantidad disponible: " + product.getAmount());
+                               continue;
+                           }
+                           break;
+                       } while (true);
+                       product.setAmount(product.getAmount() - cantidad);//este set amount hay que agregarlo a la lista de producto
+                       total += product.getSalePrice() * cantidad;
+
+                       idsProduct.add(idProduct);
+
+                   } else {
+                       System.out.println("Este producto no cuenta con existencias.");
+                       ShowMainMenu.continuar();
+                   }
+
+               } else {
+                   System.out.println("No existe un producto con el ID especificado.");
+
+               }
+               System.out.println("Si ya no desea agregar productos precione  --->  0");
+           }while (idProduct ==0 );
 
 
-            Product product = productController.searchProductIDController(idProduct);
-
-            if (product != null) {
-                if (product.getAmount() > 0) {
-                    do {
-
-                        cantidad = ValidateNumbers.capturarEntero("Digite la cantidad a comprar de este producto");
-
-                        if (cantidad <= 0) {
-                            System.out.println("La cantidad debe de ser un número entero positivo");
-                            cantidad = 0;
-                            continue;
-                        }
-
-                        if (cantidad > product.getAmount()) {
-                            System.out.println("MENSAJE: No hay cantidad suficiente de este producto. Cantidad disponible: " + product.getAmount());
-                            continue;
-                        }
-                        break;
-                    } while (true);
-                    ShowMainMenu.continuar();
-                    product.setAmount(product.getAmount() - cantidad);//este set amount hay que agregarlo a la lista de producto
-                    total += product.getSalePrice() * cantidad;
-
-                    idsProduct.add(idProduct);
-
-                } else {
-                    System.out.println("Este producto no cuenta con existencias.");
-                }
-
-            } else {
-                System.out.println("No existe un producto con el ID especificado.");
-            }
-            System.out.println("Si ya no desea agregar productos precione  --->  0");
-
-
-        } while (true);
+        } while (idProduct != ConstantMain.EXIT);
         do {
             impuesto = ValidateNumbers.capturaNumeroReal("Digite el impuesto para esta factura");
 
@@ -148,11 +153,10 @@ public class ViewCrudInvoice {
                 System.out.println("MENSAJE: El impuesto especificado no es un valor válido. Debe estar entre 1 y 100.");
                 continue;
             }
-         ShowMainMenu.continuar();
             break;
         } while (true);
 
-        Invoice invoice = new Invoice(String.valueOf(impuesto), impuesto / 100.0);
+        Invoice invoice = new Invoice(String.valueOf(idCustomer), impuesto / 100.0);
         //  idsProduct.forEach(id -> invoice.addIdsProducts(id));
         for (Integer id : idsProduct) {
             invoice.addIdsProducts(id);
@@ -160,6 +164,7 @@ public class ViewCrudInvoice {
         invoice.setTotal(total);
 
         invoiceController.saveInvoiceController(invoice);
+        ShowMainMenu.continuar();
     }
 
     //Print Customer data
