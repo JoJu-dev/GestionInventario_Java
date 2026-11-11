@@ -2,50 +2,51 @@ package com.org.sisinventory.customer.view;
 
 import com.org.main.optionsmenu.ConstantMain;
 import com.org.main.optionsmenu.ShowMainMenu;
+import com.org.sisinventory.customer.controller.CustomerController;
 import com.org.sisinventory.service.ValidateNumbers;
 
 public class MainManagementCustomer {
 
     public static void MenuCustomerManagement(ViewCrudCliente viewCrudCliente, int option) {
         int optionSubMenu;
-        do {
 
             do {
-                ShowMainMenu.Submenu("CLIENTES");
-                optionSubMenu = ValidateNumbers.capturarEntero("Digite la Opcion a realizar de clientes.");
+                do {
+                    ShowMainMenu.Submenu("CLIENTES");
+                    optionSubMenu = ValidateNumbers.capturarEntero("Digite la Opcion a realizar de clientes.");
 
-                if (optionSubMenu < ConstantMain.EXIT || optionSubMenu > ConstantMain.LIST) {
-                    System.out.println("Digíte un valor entre 0 y 4");
-                    ValidateNumbers.continuar();
+                    if (optionSubMenu < ConstantMain.EXIT || optionSubMenu > ConstantMain.LIST) {
+                        System.out.println("Digíte un valor entre 0 y 4");
+                        ValidateNumbers.continuar();
+                    }
+                } while (optionSubMenu < ConstantMain.EXIT || optionSubMenu > ConstantMain.LIST);
+
+                if (optionSubMenu == ConstantMain.EXIT) {
+                    break;
                 }
-            } while (optionSubMenu < ConstantMain.EXIT || optionSubMenu > ConstantMain.LIST);
+                switch (optionSubMenu) {
 
-            if (optionSubMenu == ConstantMain.EXIT) {
-                break;
-            }
+                    case ConstantMain.CREATE:
+                        viewCrudCliente.savedCustomerView();
+                        break;
 
-            switch (optionSubMenu) {
+                    case ConstantMain.SEARCHID:
+                        viewCrudCliente.searchIDCustomerView();
+                        break;
 
-                case ConstantMain.CREATE:
-                    viewCrudCliente.savedCustomerView();
-                    break;
-
-                case ConstantMain.SEARCHID:
-                    viewCrudCliente.searchIDCustomerView();
-                    break;
-
-                case ConstantMain.UPDATE:
-                    viewCrudCliente.UpdateCustomerView();
-                    break;
-                case ConstantMain.DELETE:
-                    viewCrudCliente.removeCustomerView();
-                    break;
-                case ConstantMain.LIST:
-                    viewCrudCliente.listCustomerView();
-                    break;
-            }
+                    case ConstantMain.UPDATE:
+                        viewCrudCliente.UpdateCustomerView();
+                        break;
+                    case ConstantMain.DELETE:
+                        viewCrudCliente.removeCustomerView();
+                        break;
+                    case ConstantMain.LIST:
+                        viewCrudCliente.listCustomerView();
+                        break;
+                }
 
 
-        } while (option < ConstantMain.EXIT || option > ConstantMain.LIST);
+            } while (option != ConstantMain.EXIT);
+
     }
 }
