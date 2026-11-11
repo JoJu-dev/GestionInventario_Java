@@ -1,5 +1,6 @@
 package com.org.sisinventory.product.view;
 
+import com.org.main.optionsmenu.ShowMainMenu;
 import com.org.sisinventory.invoice.controller.InvoiceController;
 import com.org.sisinventory.invoice.model.Invoice;
 import com.org.sisinventory.product.controller.ProductController;
@@ -25,6 +26,7 @@ public class ViewCrudProduct {
         } else {
             productController.listController().forEach(System.out::println);
         }
+        ShowMainMenu.continuar();
     }
 
     //Ver lista de productos
@@ -43,6 +45,7 @@ public class ViewCrudProduct {
         } else {
             System.out.println("Producto no encontrado");
         }
+        ShowMainMenu.continuar();
     }
 
     public void saveProductView(List<Supplier> supplierList) {
@@ -123,6 +126,7 @@ public class ViewCrudProduct {
         Product product = new Product(idProduct, name, description, purcharsePrice, salePrice, amount, amountMinStock, idSupplier);
         productController.saveProductController(product);
 
+        ShowMainMenu.continuar();
     }
 
     public void updateProductView() {
@@ -199,6 +203,7 @@ public class ViewCrudProduct {
                 productController.updateProductController(product);
             }
 
+            ShowMainMenu.continuar();
         } while (idProduct <= 0);
 
     }
@@ -220,6 +225,8 @@ public class ViewCrudProduct {
         } else {
             System.out.println("Producto no encontrado");
         }
+
+        ShowMainMenu.continuar();
     }
 
     public boolean isExistInvoiceInProduct(Integer id, InvoiceController invoiceController) {
