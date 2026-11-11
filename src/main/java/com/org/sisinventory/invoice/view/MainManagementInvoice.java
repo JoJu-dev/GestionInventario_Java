@@ -41,6 +41,6 @@ public class MainManagementInvoice {
             }
 
 
-        } while (option < ConstantMain.EXIT || option > ConstantMain.LIST);
+        } while (option != ConstantMain.EXIT);
     }
 }
