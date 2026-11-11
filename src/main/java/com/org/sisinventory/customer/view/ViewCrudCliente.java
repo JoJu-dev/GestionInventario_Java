@@ -12,28 +12,28 @@ public class ViewCrudCliente {
 
     private CustomerController controller;
 
-    public ViewCrudCliente(CustomerController controller){
+    public ViewCrudCliente(CustomerController controller) {
 
         this.controller = controller;
     }
 
-    public void listCustomerView(){
+    public void listCustomerView() {
 
-        if (this.controller.listController().isEmpty()){
+        if (this.controller.listController().isEmpty()) {
             System.out.println("Aun no se tiene registrado nungun cliente");
-        }else {
+        } else {
             this.controller.listController().forEach(System.out::println);
 
         }
         ShowMainMenu.continuar();
     }
 
-    public void searchIDCustomerView(){
+    public void searchIDCustomerView() {
         Integer ID = ValidateNumbers.capturarEntero("Agregue id de cliente para buscarlo");
 
-        Customer customer  = controller.SearchCustomerIDController(ID);
+        Customer customer = controller.SearchCustomerIDController(ID);
 
-        if (customer != null){
+        if (customer != null) {
             System.out.println(controller.SearchCustomerIDController(ID));
         }
         else {
@@ -91,10 +91,10 @@ public class ViewCrudCliente {
 
 
         } while (telephoneNumbers <= 0);
-
+        ShowMainMenu.continuar();
     }
 
-    public void UpdateCustomerView(){
+    public void UpdateCustomerView() {
         Customer customer;
         int telephoneNumbers = 0;
         int IDNumbers;
@@ -134,7 +134,7 @@ public class ViewCrudCliente {
                         break;
                     }
 
-                    controller.updateCustomerController(String.valueOf(IDNumbers),name, lastName, String.valueOf(telephoneNumbers), address, mail);
+                    controller.updateCustomerController(String.valueOf(IDNumbers), name, lastName, String.valueOf(telephoneNumbers), address, mail);
 
 
                 } while (telephoneNumbers <= 0);
@@ -143,24 +143,22 @@ public class ViewCrudCliente {
 
         } while (IDNumbers <= 0);
 
-
+        ShowMainMenu.continuar();
     }
 
-    public void removeCustomerView(){
+    public void removeCustomerView() {
         Integer ID = ValidateNumbers.capturarEntero("Agregue id de cliente para buscarlo");
 
-        Customer customer  = controller.SearchCustomerIDController(ID);
+        Customer customer = controller.SearchCustomerIDController(ID);
 
-        if (customer != null){
-            System.out.println("Cliente "+ customer.getName() +" eliminado : ");
+        if (customer != null) {
+            System.out.println("Cliente " + customer.getName() + " eliminado : ");
             controller.removeCustomerController(customer);
-        }
-
-        else {
+        } else {
             System.out.println("Cliente no encontrado");
         }
-
-         }
+            ShowMainMenu.continuar();
+    }
 
 
 }
