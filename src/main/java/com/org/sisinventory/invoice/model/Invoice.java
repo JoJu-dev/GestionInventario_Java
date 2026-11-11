@@ -99,5 +99,9 @@ public class Invoice {
     }
 
 
-
+    public void setIdsProductNews(String[] idsProduct) {
+        for(String string : idsProduct){
+            this.addIdsProducts(Integer.parseInt(string));
+        }
+    }
 }
